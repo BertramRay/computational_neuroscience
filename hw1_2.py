@@ -43,6 +43,38 @@ if __name__ == '__main__':
                 # print(level_idx, freq_idx)
                 mat2[level_idx][freq_idx] += 1
 
+    # 1.2.1 绘制最优窗口放电序列图
+    # u1: 40kHz 20dB point91
+    # u2: 42kHz 25dB point116
+    response_list = []
+    best_spike_time = sti_onset[90]
+    for i in range(u1len):
+        spike_time = unit1[i][0]
+        print(spike_time-best_spike_time)
+        if 0 < (spike_time - best_spike_time) < 0.1:
+            response_list.append((spike_time-best_spike_time)*1000)
+    f, ax = plt.subplots(figsize=(9, 6))
+    ax.set_title("best spike response(unit 1)")
+    ax.set_xlabel("time after spike(ms)")
+    plt.yticks([])
+    plt.scatter(response_list, [1]*response_list.__len__(), s=50)
+    plt.savefig("result/unit_1_best_spike_seq.png")
+
+    response_list = []
+    best_spike_time = sti_onset[115]
+    for i in range(u2len):
+        spike_time = unit2[i][0]
+        print(spike_time - best_spike_time)
+        if 0 < (spike_time - best_spike_time) < 0.1:
+            response_list.append((spike_time - best_spike_time) * 1000)
+    f, ax = plt.subplots(figsize=(9, 6))
+    ax.set_title("best spike response(unit 2)")
+    ax.set_xlabel("time after spike(ms)")
+    plt.yticks([])
+    plt.scatter(response_list, [1] * response_list.__len__(), s=50)
+    plt.savefig("result/unit_2_best_spike_seq.png")
+
+    # 1.2.2 绘制热力图
     f, ax = plt.subplots(figsize=(9, 6))
     ax.set_title("Frequency Response Area(Unit 1)")
     ax.set_xlabel("Freq (kHz)")
