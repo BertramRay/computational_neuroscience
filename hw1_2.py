@@ -50,7 +50,7 @@ if __name__ == '__main__':
     best_spike_time = sti_onset[90]
     for i in range(u1len):
         spike_time = unit1[i][0]
-        print(spike_time-best_spike_time)
+        # print(spike_time-best_spike_time)
         if 0 < (spike_time - best_spike_time) < 0.1:
             response_list.append((spike_time-best_spike_time)*1000)
     f, ax = plt.subplots(figsize=(9, 6))
@@ -64,7 +64,7 @@ if __name__ == '__main__':
     best_spike_time = sti_onset[115]
     for i in range(u2len):
         spike_time = unit2[i][0]
-        print(spike_time - best_spike_time)
+        # print(spike_time - best_spike_time)
         if 0 < (spike_time - best_spike_time) < 0.1:
             response_list.append((spike_time - best_spike_time) * 1000)
     f, ax = plt.subplots(figsize=(9, 6))
